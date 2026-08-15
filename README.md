@@ -5,7 +5,7 @@
 ### Student Information
 
 * **Student Name:** Wilson
-* **Registration Number:** *[Insert Registration Number]*
+* **Registration Number:** *669024*
 * **Course:** DSA 3050A — Business Intelligence & Data Visualization
 * **Software:** Microsoft Power BI Desktop
 * **Project:** End Semester Practical Examination
@@ -68,9 +68,8 @@ The examination recommends datasets with at least 20,000 records, multiple numer
 **Dataset:** California Real Estate Dataset
 **File:** `RealEstate_California.csv`
 
-**Source:** *[Insert the original Kaggle/open-data source URL here]*
+**Source:** *(https://www.kaggle.com/datasets/yellowj4acket/real-estate-california)*
 
-> **Note:** The uploaded CSV itself does not contain enough information to verify the original external source. The original dataset URL should therefore be inserted here before submitting the project.
 
 ---
 
@@ -118,11 +117,14 @@ The examination requires significant Power Query transformations and documentati
 
 ### Problem
 
-The dataset contained an unnecessary imported index column named `Unnamed: 0`.
+The dataset contained an unnecessary imported index column named `Column 1`.
 
 ### Transformation
 
-The `Unnamed: 0` column was removed using **Remove Columns** in Power Query.
+The `Column 1` column was removed using **Remove Columns** in Power Query.
+
+<img width="453" height="277" alt="image" src="https://github.com/user-attachments/assets/3937826a-5b6a-4ac5-859d-22cecdbc1e1f" />
+
 
 ### Reason
 
@@ -154,6 +156,9 @@ For example:
 * City → Text
 * County → Text
 
+ <img width="342" height="200" alt="image" src="https://github.com/user-attachments/assets/d46ce38d-6348-4078-8633-b71b66a3c1a2" />
+
+
 ### Reason
 
 Correct data types are necessary for accurate calculations, filtering and time-based analysis.
@@ -165,6 +170,8 @@ The dataset is prepared for modelling and DAX calculations.
 ---
 
 ## Transformation 3 — Removing Duplicate Records
+<img width="1159" height="652" alt="image" src="https://github.com/user-attachments/assets/a7039960-beca-4da0-b168-1122ba00a056" />
+
 
 ### Problem
 
@@ -190,6 +197,9 @@ Duplicate listing records were removed.
 
 Some fields contained null or missing values.
 
+<img width="435" height="369" alt="image" src="https://github.com/user-attachments/assets/68ab5db9-121e-46bb-8c72-89f59e3e7cff" />
+
+
 ### Transformation
 
 Missing values in non-essential descriptive fields were handled appropriately, while records without a usable listing date were excluded from time-based analysis.
@@ -212,6 +222,9 @@ Text fields may contain unnecessary spaces or hidden characters.
 
 ### Transformation
 
+<img width="646" height="432" alt="image" src="https://github.com/user-attachments/assets/8c491e4b-54fc-45ba-9c52-cec243123501" />
+
+
 The **Trim** and **Clean** transformations were applied to important categorical fields such as city, county and property type.
 
 ### Reason
@@ -224,27 +237,27 @@ Categorical values are standardized for analysis.
 
 ---
 
-## Transformation 6 — Standardizing Property Types
+## Transformation 6 — Standardizing Levels
 
 ### Problem
 
-Some property-type values use technical formats such as underscores.
+The Levels feild is full of the same data in different formats.
+
+<img width="336" height="580" alt="image" src="https://github.com/user-attachments/assets/1d6a3506-c9a9-4b8d-b7f8-a4fb83373b2a" />
+
 
 ### Transformation
 
-Property-type values were standardized into more readable categories.
+Levels values were standardized into more consistent categories.
 
-For example:
+<img width="360" height="416" alt="image" src="https://github.com/user-attachments/assets/e3792b4b-324b-4769-8559-961f2cebe90f" />
 
-`SINGLE_FAMILY` → `Single Family`
 
 ### Reason
 
 Readable categories improve dashboard presentation and interpretation.
 
-### Result
 
-Property types can be easily interpreted by dashboard users.
 
 ---
 
@@ -265,6 +278,9 @@ The categories are:
 * $1M–$2M
 * $2M+
 
+ <img width="1110" height="566" alt="image" src="https://github.com/user-attachments/assets/f7b8e91e-a848-4e22-8332-ab29d4a8a639" />
+
+
 ### Reason
 
 Price categories allow properties to be compared across broad market segments.
@@ -284,6 +300,9 @@ The original dataset contains `yearBuilt`, but property age is more useful for d
 ### Transformation
 
 A calculated column called `PropertyAge` was created using the property's construction year.
+
+<img width="678" height="432" alt="image" src="https://github.com/user-attachments/assets/4e99f607-7876-410d-858d-6d8867cc91b3" />
+
 
 ### Reason
 
@@ -313,6 +332,9 @@ The categories include:
 * 4 Bedrooms
 * 5+ Bedrooms
 
+<img width="909" height="482" alt="image" src="https://github.com/user-attachments/assets/a325d821-3675-452d-908c-4c128f26b2b9" />
+ 
+
 ### Reason
 
 This allows properties to be grouped into meaningful bedroom segments.
@@ -331,7 +353,7 @@ A single flat table can make analytical modelling less efficient.
 
 ### Transformation
 
-Reference queries were used to create dimension tables for location and property characteristics.
+Reference queries were used to create dimension tables for location.
 
 ### Reason
 
@@ -355,16 +377,11 @@ Dimension tables include:
 
 * **DimDate**
 * **DimLocation**
-* **DimProperty**
+
 
 The model follows a star-schema structure:
 
-```text
-                  DimDate
-                     |
-                     |
-                     |
-DimLocation ---- FactProperty ---- DimProperty
+
 ```
 
 ## FactProperty
@@ -395,6 +412,9 @@ It contains:
 * Month
 * Month Year
 * Quarter
+
+ <img width="417" height="215" alt="image" src="https://github.com/user-attachments/assets/a8eccf77-85f5-4285-a487-4eb1eef410a8" />
+
 
 ## DimLocation
 
