@@ -364,7 +364,36 @@ A dimensional model improves organization and filtering.
 The data can be structured using a star-schema approach.
 
 ---
+# 7. Data Model 
+## DimDate
 
+The DimDate table supports time-based analysis.
+
+It contains:
+
+Date
+Year
+Month Number
+Month
+Month Year
+Quarter
+
+## DimLocation
+
+The DimLocation table contains geographic information such as:
+
+State
+County
+City
+ZIP Code
+
+This dimension allows users to analyse property prices geographically.
+
+# 8. Relationships
+
+The dimensions are connected to the central FactProperty table using one-to-many relationships where appropriate.
+
+<img width="1024" height="885" alt="image" src="https://github.com/user-attachments/assets/e32737e3-57a1-448a-b63d-45e35d44a5f7" />
 
 
 # 9. DAX Measures
@@ -494,213 +523,81 @@ This structure follows the dashboard guidance in the examination document.
 
 ## Page 1 — Executive Overview
 
-### Purpose
-
-The Executive Overview provides a high-level summary of the California real estate market.
-
-### Main KPIs
-
-* Total Properties
-* Average Property Price
-* Median Property Price
-* Average Price Per Square Foot
-* Average Living Area
-
-### Main Visuals
-
-* Average Property Price Over Time
-* Average Property Price by County
-* Properties by Home Type
-* Interactive slicers for county, city, property type, price category and year
-
-### Main Question
-
-> What does the California real estate market look like overall?
+<img width="1302" height="726" alt="image" src="https://github.com/user-attachments/assets/7f8b09db-32c9-469a-a58b-927b612a1a35" />
 
 ---
 
 # Page 2 — Property & Location Analysis
 
-### Purpose
+<img width="1269" height="746" alt="image" src="https://github.com/user-attachments/assets/9c8f0148-1d1f-4e39-a8c7-17c359d84cc7" />
 
-This page investigates differences in property values across locations and property characteristics.
-
-### Main Visuals
-
-* Average Property Price by County
-* Average Property Price by Bedroom Category
-* Average Price Per Square Foot by County
-* Property Count by City
-* Living Area versus Property Price scatter plot
-
-### Main Question
-
-> Where are properties more expensive and what types of properties dominate different markets?
 
 ---
 
 # Page 3 — Market Diagnostic Analysis
 
-### Purpose
+<img width="1302" height="735" alt="image" src="https://github.com/user-attachments/assets/a8a38a27-2fef-432e-9caa-d8d994ee9a79" />
 
-This page investigates factors that may explain differences in property prices.
 
-### Main Visuals
 
-* Average Price by Property Age
-* Average Price by Garage Availability
-* Average Price by Pool Availability
-* Average Price by New Construction Status
-* Bedrooms versus Price
-* County analytical table
-
-### Main Question
-
-> Why might some properties command higher prices than others?
-
-This page focuses on diagnostic analysis rather than simply describing the market.
 
 ---
 
-# 11. Interactivity
+# 11. Key Business Insights
 
-The report incorporates Power BI interactive features including:
+The Power BI dashboard transforms the California real estate listing data into useful business intelligence by showing differences in property prices, locations, property sizes, home types, bedrooms, pools, and time periods.
 
-* Slicers
-* Cross-filtering
-* Drill-down
-* Interactive charts
-* Dynamic filtering
-* Dashboard navigation
+The dashboard shows that the California real estate market has substantial variation in property prices. The overall average property price is approximately $1.21 million, while the median property price is approximately $694,700. This large difference suggests that some very expensive properties are increasing the overall average.
 
-The slicers allow users to investigate the market by:
+Geographically, property prices vary considerably between counties. Santa Barbara County has the highest average property price at approximately $3.6 million, followed by Napa County and San Mateo County. The dashboard also shows differences in average price per square foot, with Modoc County having the highest value among the counties displayed.
 
-* County
-* City
-* Property Type
-* Price Category
-* Year
+Property characteristics also have an important relationship with price. The scatter plot shows a positive relationship between living area and property price, meaning that larger properties generally tend to have higher prices. Properties with more bedrooms also tend to have higher average prices, with 4+ bedroom properties averaging approximately $3.1 million.
 
-These features allow users to move from overall market performance to specific locations and property characteristics.
+Property type is another important factor. Single-family homes account for approximately 62.46% of the properties, making them the dominant property type in the dataset. Lots and condos represent smaller proportions of the market.
+
+The dashboard also indicates that properties with pools have a higher average price than properties without pools. Properties with a pool have an average price of approximately $2.9 million, compared with approximately $1.0 million for properties without a pool.
+
+Finally, property prices change over time. The average property price generally increased between 2017 and 2019, reaching a peak of approximately $1.5 million in 2019, before declining toward 2021.
+
+Therefore, the main business problem is addressed by using Power BI to identify price patterns, geographic differences, property characteristics, and changes over time, enabling real estate businesses and potential buyers or investors to better understand the California property market.
 
 ---
 
-# 12. Key Business Insights
+#12. Analytical Questions
 
-The final insights will be based on the completed Power BI analysis.
+##1. What are the overall average and median property prices?
+Average: $1.21M
+Median: $694.7K
 
-The report is designed to identify:
+The higher average indicates the presence of high-priced properties.
 
-1. Differences in average and median property prices.
-2. Counties and cities with relatively high property values.
-3. Differences in price per square foot between locations.
-4. The relationship between living area and property price.
-5. Differences in property prices according to bedrooms and bathrooms.
-6. Price differences between properties with and without garages.
-7. Price differences between properties with and without pools.
-8. Differences between new construction and existing properties.
-9. Changes in property prices over the available listing period.
-10. Property categories that represent significant portions of the market.
+##2. Which counties have the highest average prices?
 
-**Note:** Specific numerical findings should be entered here after the final Power BI dashboard has been completed so that the README reports the actual results rather than assumed values.
+The highest include:
 
+Santa Barbara County: ~$3.6M
+Napa County: ~$2.85M
+San Mateo County: ~$2.65M
+Marin County: ~$2.48M
+##3. How does property size relate to price?
+
+There is a positive relationship between living area and price. Larger properties generally have higher prices.
+
+##4. How do property characteristics relate to price?
+
+Properties with more bedrooms generally have higher prices. Properties with pools also have higher average prices (~$2.9M vs ~$1.0M without pools). The dashboard does not provide enough information to conclude the specific effect of bathrooms and garages.
+
+##5. How do prices vary by type, location and time?
+
+Single-family homes dominate the dataset at 62.46%. Prices vary significantly by county, with Santa Barbara among the highest. Average prices increased significantly up to 2019, when they reached about $1.5M, before declining toward 2021.
 ---
 
 # 13. Conclusion
 
-This project demonstrates the use of Business Intelligence techniques to transform raw California real estate listing data into an interactive analytical solution.
-
-Power Query was used to clean and transform the dataset, while a dimensional data model was developed to support efficient analysis. DAX measures were then created to calculate key property and market indicators.
-
-The final Power BI dashboards provide an interactive way to explore property prices, locations, property characteristics and market differences.
-
-The project demonstrates the complete BI workflow:
-
-**Data Acquisition → Data Cleaning → Data Transformation → Data Modelling → DAX Analysis → Dashboard Development → Business Insights**
+The Power BI analysis shows that California's real estate market has significant differences in property prices, locations, sizes, and property characteristics. The average property price is about $1.21M, with Santa Barbara County having some of the highest average prices. Larger properties, properties with more bedrooms, and properties with pools generally have higher prices. Prices also changed considerably over time, reaching a peak around 2019. Overall, the dashboard provides useful insights that can support property pricing, investment decisions, and market analysis.
 
 ---
 
-# 14. Repository Structure
 
-The GitHub repository follows the recommended structure:
-
-```text
-DSA3050-PowerBI-Wilson-RegNo/
-│
-├── README.md
-│
-├── data/
-│   └── RealEstate_California.csv
-│
-├── powerbi/
-│   └── DSA3050_Wilson.pbix
-│
-└── screenshots/
-    ├── 01_raw_data.png
-    ├── 02_power_query.png
-    ├── 03_model.png
-    ├── 04_dax_measures.png
-    ├── 05_dashboard_overview.png
-    ├── 06_dashboard_analysis.png
-    ├── 07_dashboard_diagnostics.png
-    └── 08_key_insights.png
-```
-
-The examination specifically recommends including the dataset, PBIX file, README and screenshots in the repository.
-
----
-
-# 15. Screenshots
-
-The following screenshots provide evidence of the development process:
-
-| Screenshot                     | Evidence                      |
-| ------------------------------ | ----------------------------- |
-| `01_raw_data.png`              | Original dataset              |
-| `02_power_query.png`           | Power Query transformations   |
-| `03_model.png`                 | Completed data model          |
-| `04_dax_measures.png`          | DAX calculations              |
-| `05_dashboard_overview.png`    | Executive Overview            |
-| `06_dashboard_analysis.png`    | Property & Location Analysis  |
-| `07_dashboard_diagnostics.png` | Market Diagnostic Analysis    |
-| `08_key_insights.png`          | Important analytical findings |
-
----
-
-# 16. Project Development Process
-
-The project was developed progressively rather than importing the dataset and immediately creating visualizations.
-
-The development process was:
-
-1. Acquire and inspect the dataset.
-2. Identify the analytical/business problem.
-3. Clean and transform the data using Power Query.
-4. Create appropriate dimension tables.
-5. Develop the analytical data model.
-6. Create a dedicated Date Table.
-7. Develop DAX measures.
-8. Create interactive dashboard pages.
-9. Analyse and interpret the results.
-10. Document the project using GitHub.
-11. Capture screenshots showing the development process.
-
-Meaningful Git commits should be used to demonstrate progressive development, as recommended by the examination requirements.
-
----
-
-## 17. Technologies Used
-
-* **Microsoft Power BI Desktop**
-* **Power Query**
-* **DAX**
-* **GitHub**
-* **CSV Dataset**
-
----
-
-## 18. Academic Integrity
-
-This project represents an individual Business Intelligence practical examination. All Power Query transformations, data modelling decisions, DAX calculations and dashboard designs should be understood by the student and be explainable during assessment.
 
 The examination states that students should be prepared to explain the transformations, modelling decisions, DAX measures and dashboard features used in their submission.
