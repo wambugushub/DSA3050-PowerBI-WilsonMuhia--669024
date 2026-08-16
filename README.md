@@ -365,102 +365,7 @@ The data can be structured using a star-schema approach.
 
 ---
 
-# 7. Data Model
 
-The main fact table is:
-
-**FactProperty**
-
-It contains the property listing and numerical information used for analysis.
-
-Dimension tables include:
-
-* **DimDate**
-* **DimLocation**
-
-
-The model follows a star-schema structure:
-
-
-```
-
-## FactProperty
-
-The `FactProperty` table contains transactional/listing-level information such as:
-
-* Property ID
-* Listing Date
-* Price
-* Price per Square Foot
-* Living Area
-* Bedrooms
-* Bathrooms
-* Building Area
-* Garage Spaces
-* Property Age
-* Property characteristics
-
-## DimDate
-
-The `DimDate` table supports time-based analysis.
-
-It contains:
-
-* Date
-* Year
-* Month Number
-* Month
-* Month Year
-* Quarter
-
- <img width="417" height="215" alt="image" src="https://github.com/user-attachments/assets/a8eccf77-85f5-4285-a487-4eb1eef410a8" />
-
-
-## DimLocation
-
-The `DimLocation` table contains geographic information such as:
-
-* State
-* County
-* City
-* ZIP Code
-
-This dimension allows users to analyse property prices geographically.
-
-## DimProperty
-
-The `DimProperty` table contains descriptive property characteristics such as:
-
-* Home Type
-* Bedroom Category
-* Price Category
-* Year Built
-* Property Age
-* Garage
-* Pool
-* New Construction
-
----
-
-# 8. Relationships
-
-The dimensions are connected to the central `FactProperty` table using one-to-many relationships where appropriate.
-
-The intended structure is:
-
-```text
-DimDate       1 ───────── * FactProperty
-
-DimLocation   1 ───────── * FactProperty
-
-DimProperty   1 ───────── * FactProperty
-```
-
-Single-direction filtering is used to avoid unnecessary ambiguous filter paths.
-
-The examination requires appropriate relationship cardinality, filter direction, keys and a dedicated Date Table.
-
----
 
 # 9. DAX Measures
 
@@ -470,164 +375,106 @@ The following measures were developed.
 
 ### 1. Total Properties
 
-```DAX
-Total Properties =
-DISTINCTCOUNT(FactProperty[id])
-```
+<img width="305" height="69" alt="image" src="https://github.com/user-attachments/assets/ed3dffcd-5603-42f3-b131-e1cef7c61669" />
+
 
 Counts the unique property listings.
 
 ### 2. Total Property Value
 
-```DAX
-Total Property Value =
-SUM(FactProperty[Price])
-```
+<img width="231" height="64" alt="image" src="https://github.com/user-attachments/assets/c673e8a8-662b-4bc9-99d6-d74bcbc6c928" />
+
 
 Calculates the total listed value of properties.
 
 ### 3. Average Property Price
 
-```DAX
-Average Property Price =
-AVERAGE(FactProperty[Price])
-```
+<img width="242" height="67" alt="image" src="https://github.com/user-attachments/assets/0a740d92-104c-40a9-a706-74f4feab9a8d" />
+
 
 Calculates the average listed property price.
 
 ### 4. Median Property Price
 
-```DAX
-Median Property Price =
-MEDIAN(FactProperty[Price])
-```
+<img width="250" height="78" alt="image" src="https://github.com/user-attachments/assets/56b109e7-ec7e-4f73-afab-566d67ae4c45" />
+
 
 Calculates the median property price.
 
 ### 5. Average Price Per Square Foot
 
-```DAX
-Average Price Per Sq Ft =
-AVERAGE(FactProperty[PricePerSqFt])
-```
+<img width="322" height="72" alt="image" src="https://github.com/user-attachments/assets/6433a5fc-45d2-498b-b5f8-73765f857998" />
+
 
 Measures the average property price relative to living area.
 
 ### 6. Average Living Area
 
-```DAX
-Average Living Area =
-AVERAGE(FactProperty[LivingArea])
-```
+<img width="275" height="72" alt="image" src="https://github.com/user-attachments/assets/396d9d02-4639-4cab-8116-3cc940f4f9e2" />
+
 
 Calculates the average living area.
 
 ### 7. Average Bedrooms
 
-```DAX
-Average Bedrooms =
-AVERAGE(FactProperty[Bedrooms])
-```
+<img width="266" height="67" alt="image" src="https://github.com/user-attachments/assets/33da2e78-e284-4030-9d2a-4125655b3c8b" />
+
 
 Calculates the average number of bedrooms.
 
 ### 8. Average Bathrooms
 
-```DAX
-Average Bathrooms =
-AVERAGE(FactProperty[Bathrooms])
-```
+<img width="249" height="67" alt="image" src="https://github.com/user-attachments/assets/1b4a349f-78c8-49a6-b15a-a1e43db379fa" />
+
 
 Calculates the average number of bathrooms.
 
 ### 9. Properties With Garage
 
-```DAX
-Properties With Garage =
-CALCULATE(
-    [Total Properties],
-    FactProperty[HasGarage] = 1
-)
-```
+<img width="308" height="104" alt="image" src="https://github.com/user-attachments/assets/00ac56dd-771b-4dbd-88a3-9b3dff770b07" />
 
-Counts properties that have a garage.
+
+Counts properties that have greater than or equal to 1 garage space.
 
 ### 10. Properties With Pool
 
-```DAX
-Properties With Pool =
-CALCULATE(
-    [Total Properties],
-    FactProperty[Pool] = 1
-)
-```
+<img width="268" height="116" alt="image" src="https://github.com/user-attachments/assets/82cd7146-2d68-4620-800c-9ba9b361da8b" />
+
 
 Counts properties with a pool.
 
 ### 11. New Construction Properties
 
-```DAX
-New Construction Properties =
-CALCULATE(
-    [Total Properties],
-    FactProperty[IsNewConstruction] = 1
-)
-```
+<img width="298" height="113" alt="image" src="https://github.com/user-attachments/assets/a4a68117-ea46-45a7-9152-76200f97adbe" />
+
 
 Counts properties identified as new construction.
 
 ### 12. Garage Percentage
 
-```DAX
-Garage Percentage =
-DIVIDE(
-    [Properties With Garage],
-    [Total Properties],
-    0
-)
-```
+<img width="296" height="146" alt="image" src="https://github.com/user-attachments/assets/93aea03f-bb1f-4347-93a6-84203cdfb885" />
+
 
 Calculates the percentage of properties with garages.
 
 ### 13. New Construction Percentage
 
-```DAX
-New Construction % =
-DIVIDE(
-    [New Construction Properties],
-    [Total Properties],
-    0
-)
-```
+<img width="307" height="144" alt="image" src="https://github.com/user-attachments/assets/bbcb92bf-6f55-426d-9f91-fb8acab5c3bb" />
+
 
 Calculates the proportion of listings classified as new construction.
 
 ### 14. Price Difference from Average
 
-```DAX
-Price Difference from Average =
-[Average Property Price]
--
-CALCULATE(
-    [Average Property Price],
-    ALL(FactProperty)
-)
-```
+<img width="301" height="153" alt="image" src="https://github.com/user-attachments/assets/31701a29-4862-4753-9fed-97b6327b7c2b" />
+
 
 Measures the difference between the selected context's average price and the overall market average.
 
 ### 15. County Price Rank
 
-```DAX
-County Price Rank =
-RANKX(
-    ALL(FactProperty[county]),
-    [Average Property Price],
-    ,
-    DESC,
-    DENSE
-)
-```
+<img width="343" height="172" alt="image" src="https://github.com/user-attachments/assets/3024f82b-33ad-442d-bdac-e3ad83cf9990" />
+
 
 Ranks counties according to average property price.
 
