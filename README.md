@@ -585,7 +585,7 @@ There is a positive relationship between living area and price. Larger propertie
 
 ## 4. How do property characteristics relate to price?
 
-Properties with more bedrooms generally have higher prices. Properties with pools also have higher average prices (~$2.9M vs ~$1.0M without pools). The dashboard does not provide enough information to conclude the specific effect of bathrooms and garages.
+Properties with more bedrooms generally have higher prices. Properties with pools also have higher average prices (~$2.9M vs ~$1.0M without pools).
 
 ## 5. How do prices vary by type, location and time?
 
