@@ -599,5 +599,3 @@ The Power BI analysis shows that California's real estate market has significant
 ---
 
 
-
-The examination states that students should be prepared to explain the transformations, modelling decisions, DAX measures and dashboard features used in their submission.
