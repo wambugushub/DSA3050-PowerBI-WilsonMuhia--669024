@@ -565,13 +565,13 @@ Therefore, the main business problem is addressed by using Power BI to identify 
 
 #12. Analytical Questions
 
-##1. What are the overall average and median property prices?
+## 1. What are the overall average and median property prices?
 Average: $1.21M
 Median: $694.7K
 
 The higher average indicates the presence of high-priced properties.
 
-##2. Which counties have the highest average prices?
+## 2. Which counties have the highest average prices?
 
 The highest include:
 
@@ -579,17 +579,18 @@ Santa Barbara County: ~$3.6M
 Napa County: ~$2.85M
 San Mateo County: ~$2.65M
 Marin County: ~$2.48M
-##3. How does property size relate to price?
+## 3. How does property size relate to price?
 
 There is a positive relationship between living area and price. Larger properties generally have higher prices.
 
-##4. How do property characteristics relate to price?
+## 4. How do property characteristics relate to price?
 
 Properties with more bedrooms generally have higher prices. Properties with pools also have higher average prices (~$2.9M vs ~$1.0M without pools). The dashboard does not provide enough information to conclude the specific effect of bathrooms and garages.
 
-##5. How do prices vary by type, location and time?
+## 5. How do prices vary by type, location and time?
 
 Single-family homes dominate the dataset at 62.46%. Prices vary significantly by county, with Santa Barbara among the highest. Average prices increased significantly up to 2019, when they reached about $1.5M, before declining toward 2021.
+
 ---
 
 # 13. Conclusion
